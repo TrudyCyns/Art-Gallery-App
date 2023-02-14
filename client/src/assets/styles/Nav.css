@@ -1,0 +1,10 @@
+.border-blue {
+  border-color: var(--bright-navy-blue) !important;
+}
+
+
+@media screen and (min-width: 992px) {
+  .login-button-style {
+    width: 150%;
+  }
+}

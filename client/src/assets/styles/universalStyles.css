@@ -1,0 +1,73 @@
+.ff-averta {
+  font-family: Averta, sans-serif;
+}
+
+.bg-white {
+  background-color: var(--bg-white) !important;
+}
+
+.bg-black {
+  background-color: black !important;
+}
+
+.width-20 {
+  width: 20%;
+}
+
+.w-45 {
+  width: 45%;
+}
+.vh-95 {
+  height: 95vh !important;
+}
+.vh-91 {
+  height: 91.5vh !important;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-bolder {
+  font-weight: bolder;
+}
+
+.dark-blue-text {
+  color: var(--dark-blue);
+}
+
+.flickr-blue-text {
+  color: var(--flickr-blue);
+}
+
+.light-blue-text {
+  color: var(--light-blue);
+}
+
+.blue-munsell-text {
+  color: var(--blue-munsell);
+}
+
+.fs-small {
+  font-size: small;
+}
+
+.fs-x-small {
+  font-size: x-small !important;
+}
+
+a:hover {
+  color: var(--light-blue);
+}
+
+.no-border {
+  border-style: none;
+}
+
+.bg-light-navy-blue {
+  background-color: var(--bright-navy-blue) !important;
+}
+
+.text-charcoal {
+  color: var(--charcoal);
+}
