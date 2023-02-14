@@ -11,28 +11,15 @@ function NavBar() {
           <Navbar.Brand href="/">ArtGallery</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="d-flex align-items-center  mx-auto">
-              <Nav.Link
-                className="mx-5 text-bold"
-                href="https://www.interswitchgroup.com/uganda/blog"
-                target="_blank"
-              >
-                Blog
-              </Nav.Link>
-              <Nav.Link
-                className="mx-5 text-bold"
-                href="https://www.interswitchgroup.com/uganda/aboutus"
-                target="_blank"
-              >
-                About Us
-              </Nav.Link>
-              <Nav.Link
-                className="mx-5 text-bold"
-                href="https://www.interswitchgroup.com/uganda/consultant"
-                target="_blank"
-              >
-                Support
-              </Nav.Link>
+            <Nav className="d-flex align-items-center mx-auto">
+              <Nav.Item>
+                <Button
+                  href="/login"
+                  className="rounded-pill"
+                >
+                  Login
+                </Button>
+              </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -82,28 +69,24 @@ function NavBar() {
 //   );
 // }
 
-// function LogoNavbar() {
-//   return (
-//     <header className="border-bottom">
-//       <Navbar
-//         collapseOnSelect
-//         expand="lg"
-//         bg="light"
-//         variant="light"
-//         className="border-bottom border-5 border-blue"
-//       >
-//         <Container>
-//           <Navbar.Brand href="/" className="ps-5">
-//             <Image
-//               src={InterswitchColoredLogo}
-//               className="d-inline-block align-top "
-//               alt="Interswitch"
-//             />
-//           </Navbar.Brand>
-//         </Container>
-//       </Navbar>
-//     </header>
-//   );
-// }
+function LogoNavbar() {
+  return (
+    <header className="border-bottom">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="dark"
+        variant="dark"
+        className="bg-black"
+      >
+        <Container>
+          <Navbar.Brand href="/" className="ps-5">
+            ArtGallery
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
+    </header>
+  );
+}
 
-export { NavBar };
+export { NavBar, LogoNavbar };

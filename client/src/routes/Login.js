@@ -1,9 +1,29 @@
-import React from 'react';
+import React from "react";
+import { LogoNavbar } from "../components/Navs";
+import { Container, Tabs, Tab } from "react-bootstrap";
+import { LoginForm, SignupForm } from "../components/Forms";
 
 function Login(props) {
   return (
-    <div>
-      <p>This is the login page</p>
+    <div className="vh-100 bg-black">
+      <LogoNavbar />
+      <main className="p-3">
+        <Container className="p-3 bg-light rounded">
+          <Tabs
+            defaultActiveKey="profile"
+            id="fill-tab-example"
+            className="mb-3"
+            fill
+          >
+            <Tab eventKey="login" title="Login">
+              <LoginForm />
+            </Tab>
+            <Tab eventKey="signup" title="Sign Up">
+              <SignupForm />
+            </Tab>
+          </Tabs>
+        </Container>
+      </main>
     </div>
   );
 }
