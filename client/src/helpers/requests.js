@@ -27,9 +27,20 @@ const postPhotoDetails = async (data) => {
     });
 
     console.log(res.data);
-
   } catch (err) {
     console.error(err);
+  }
+};
+
+const getPhotos = async (setPhotos) => {
+  try {
+    const res = await axios.get(`${baseUrl}/photos`, {
+      headers: { Accept: '*/*' },
+    });
+
+    setPhotos(res.data.photos);
+  } catch (error) {
+    console.error(error);
   }
 };
 
@@ -41,4 +52,4 @@ const createFormData = (file) => {
   return data;
 };
 
-export { postPhotoDetails, uploadPhoto, createFormData };
+export { postPhotoDetails, uploadPhoto, createFormData, getPhotos };
