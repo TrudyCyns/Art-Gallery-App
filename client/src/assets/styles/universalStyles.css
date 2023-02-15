@@ -26,3 +26,7 @@
 .text-oxford-blue {
   color: var(--oxford-blue) !important;
 }
+
+.text-platinum {
+  color: var(--platinum) !important;
+}

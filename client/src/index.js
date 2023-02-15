@@ -8,10 +8,12 @@ import reportWebVitals from './reportWebVitals';
 
 import LandingPage from "./routes/Landing";
 import LoginPage from "./routes/Login";
+import DashboardPage from './routes/Dashboard';
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
   { path: "/login", element: <LoginPage /> },
+  { path: "/dashboard", element: <DashboardPage /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
