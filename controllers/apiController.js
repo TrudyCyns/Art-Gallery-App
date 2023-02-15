@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Photo = require('./../models/Photo');
 const bcrypt = require('bcryptjs');
 
 const processFile = require('../middleware/upload');
@@ -17,26 +18,34 @@ exports.createUser = async (req, res, next) => {
     } else {
       const newUser = new User({ firstName, lastName, Email, Password });
 
-      // Hash Password
-      bcrypt.genSalt(10, (err, salt) =>
-        bcrypt.hash(newUser.Password, salt, (err, hash) => {
-          if (err) {
-            console.error(err);
-          }
-          // set password to hash
-          newUser.Password = hash;
-
-          newUser
-            .save()
-            .then((user) => {
-              res.send({ message: 'User Successfully Created!' });
-            })
-            .catch((err) => {
-              console.error(err);
-              res.status(400).send('Error Creating User!');
-            });
+      newUser
+        .save()
+        .then((user) => {
+          res.send({ message: 'User Successfully created' });
         })
-      );
+        .catch((err) => {
+          console.error(err);
+          res.status(400).send('Error Creating User.');
+        });
+
+      // // Hash Password
+      // bcrypt.genSalt(10, (err, salt) =>
+      //   bcrypt.hash(newUser.Password, salt, (err, hash) => {
+      //     if (err) {
+      //       console.error(err);
+      //     }
+      //     // set password to hash
+      //     newUser.Password = hash;
+
+      // newUser.save().then((user) => {
+      //   res.send({ message: 'User Successfully Created!' });
+      // });
+      //       .catch((err) => {
+      //         console.error(err);
+      //         res.status(400).send('Error Creating User!');
+      //       });
+      //   })
+      // );
     }
   });
 };
@@ -132,5 +141,32 @@ exports.getFiles = async (req, res) => {
     res.status(500).send({
       message: 'Unable to read list of files!',
     });
+  }
+};
+
+// Create a Photo entry
+exports.createPhoto = async (req, res) => {
+  const { Title, Description, photoUrl } = req.body;
+
+  const newPhoto = new Photo({ Title, Description, photoUrl });
+
+  newPhoto
+    .save()
+    .then((photo) => {
+      res.send({ message: 'Photo Details Successfully Saved' });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(400).send({ message: 'Photo Details Failed to Save' });
+    });
+};
+
+exports.getAllPhotos = async (req, res) => {
+  try {
+    const photos = await Photo.find();
+    res.status(200).send({ photos });
+  } catch (err) {
+    console.error(err);
+    res.status(404).send('Failed to retieve Photo Details.');
   }
 };
