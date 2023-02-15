@@ -9,11 +9,15 @@ import reportWebVitals from './reportWebVitals';
 import LandingPage from "./routes/Landing";
 import LoginPage from "./routes/Login";
 import DashboardPage from './routes/Dashboard';
+import GalleryPage from './routes/Gallery';
+import ErrorPage from './routes/Error';
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/dashboard", element: <DashboardPage /> },
+  { path: "/myphotos", element: <GalleryPage /> },
+  { path: "*", element: <ErrorPage /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
