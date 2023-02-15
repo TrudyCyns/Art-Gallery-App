@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "artgalleryproject-377815",
+  "private_key_id": "5df333227a60bf06eef2405efc50fe88f3913f08",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCbxw5Y8TylPY4p\neYEmGRqWvkv0vFTqpuoq008PUcKmDFTBuF6jaNtjrLtZ581EOtoSKh5i9svXSyU+\n72Rg6qoCr8I/h5VfE2VX5O/qjIoTqb3KKpFe55oOoocGwCSZczYI07L9beLKflRA\n1n2ChT7/4r0KOl2kNp7j32S5G0fGhiD8N+81vb5l46UjEJ3eqJMZtjcpT8n2taWI\nk4EQ4CzKBALQTo2MtY8gqcHxtwXHJ8V3zx7YfZ1deJqA1s4E5M8ZuHjENHsDgc4s\nI9kMHe4vTiYFFIA6LZmqDUray3wwE/w+d3cn+/MJxFlTrEa8A4HpRETyx30LILcQ\ntflXD1ptAgMBAAECggEABu+QNAWu2rf/DcAvIwkQZ41N/vXPfX1Ui3cW++dHq7ji\n7jDwcviiEGuAq18lHJUjn/yEyu9SzwFoxWC6kkK1TDZsoOnMJmx/GuOvcSNBEGD1\n0w8Q1wFBv5L2pzMkMTpEueEvhNXUOIomFxcluL6IU7OexJpc9uKHfqONgPaV72De\nfXYHKgP06kM8i6+NPuiG2HbjLH1vs3V5nXNYabrKrWITWr8IR0IW8SeNdydXi9wE\nWImbqWBK7DKNkjlkavpyYAefq5g/8TiXOnTHX2MO5DacktlCH3ZqYX6JeMXYdPqQ\n9sNZfyV2Ftze2av4DEXb6U1htigGSJJufr6dDUnkeQKBgQDby0q7E2dp3BmA7kWl\nKJGgGOUDBkH3qd7NaHQcsc5DE72BIRnbZmDry2O+8c00ZI4mAnWBsamG7nsFhpAQ\n+9MRDlkfki0Krr67poMl6q8LvJwkgduz9S0lBh1bXcbFuIxwGjsQOPVKg/iXSGC8\nQSlUYKaWaHpTFlr0zoy8go7wpQKBgQC1cDBq/nl/6EKbTTRqM5tmLfvKSyxe77Dl\nzz7F3d2Mir38kwFaPOX3qZOQ11YVqKGz3nm/ABkzA22IIrPSXIl61ZjCwiICg5vC\nYxhweWVQlx8qC1Po7PaAvyRCCQnZ7kc47KSSH/rwPfs6pHCX2eEkDrmWoTSORAmr\n2oNE9DaQKQKBgDnMYeCEH8O0v3gqMGJYIsNpCIAdGyfXoeF+QFpzX3xAKqtUWwpZ\nB8+58ob56y6F6uOP7fqnD5+OAwfW9PeiYUSw8zrcI8AVZ87M4NwNtO5vMNhg1bej\nF7YOv5WROX4xI60vGK0RbV+lCLAvtlCLCiVILUaMPu6uiEisMFI6OwCJAoGAD1T1\nonTyi25zAnCZt0e5H/9OwZ9slnEmv6Stp0bCS/gFaex6NsfinvUDdT/dFGN1lp98\nJjm552eov9I+483SCEE4cWy6NwAsD1cUX5zChPbgOUtPweUUR3jfdX0SCgpqllLY\n7UgqilaSfjgbE5njvopIAISKzmLNdmo2oYMJgVECgYADctn1bjhCYAtXZEWD+V/m\nCa75Dfodn25bJCBWBqEwFiMOscUdBMuHUtAx07UqjqH9sjJhN0/6ShlzkezV5KYJ\np2KNqR8+rchpztXacpJvu9R4qvQkG6O29GWLZ/z2rqzm6jkJQ9k4VTQNYkzDPoKO\nL6aPMXDN6YW4nUlRPyJXew==\n-----END PRIVATE KEY-----\n",
+  "client_email": "tru-admin@artgalleryproject-377815.iam.gserviceaccount.com",
+  "client_id": "105043423601888359877",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tru-admin%40artgalleryproject-377815.iam.gserviceaccount.com"
+}
