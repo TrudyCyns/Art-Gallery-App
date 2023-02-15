@@ -57,23 +57,19 @@ exports.getAllUsers = async (req, res) => {
 // Login a User
 exports.loginUser = async (req, res) => {
   const { Email, Password } = req.body;
+  try {
+    const user = await User.findByEmailForLogin(Email);
 
-  User.findOne({ Email: Email }, (err, user) => {
-    if (err) {
-      console.error(err);
-      res.send('An error Occured');
-      return;
-    }
     if (!user) {
       res.send('User not found');
+      return;
     }
-
-    console.log(user.Password);
-    console.log(Password);
 
     bcrypt.compare(Password, user.Password, (err, isMatch) => {
       if (err) {
         console.error(err);
+        res.send('An error occurred');
+        return;
       }
       if (isMatch) {
         res.send('Passwords match');
@@ -81,7 +77,10 @@ exports.loginUser = async (req, res) => {
         res.send('Passwords do not match');
       }
     });
-  });
+  } catch (error) {
+    console.error(error);
+    res.send('An error occurred');
+  }
 };
 
 // Upload File
