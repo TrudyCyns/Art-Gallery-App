@@ -14,5 +14,6 @@ router.route('/photos/upload').post(apiController.uploadFile);
 router.route('/bucket/list').get(apiController.getFiles);
 router.route('/photos').get(apiController.getAllPhotos);
 router.route('/photos/new').post(apiController.createPhoto);
+router.route('/login').post(apiController.loginUser);
 
 module.exports = router;

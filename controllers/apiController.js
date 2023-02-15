@@ -18,34 +18,25 @@ exports.createUser = async (req, res, next) => {
     } else {
       const newUser = new User({ firstName, lastName, Email, Password });
 
-      newUser
-        .save()
-        .then((user) => {
-          res.send({ message: 'User Successfully created' });
+      // Hash Password
+      bcrypt.genSalt(10, (err, salt) =>
+        bcrypt.hash(newUser.Password, salt, (err, hash) => {
+          if (err) {
+            console.error(err);
+          }
+          newUser.Password = hash;
+
+          newUser
+            .save()
+            .then((user) => {
+              res.send({ message: 'User Successfully created' });
+            })
+            .catch((err) => {
+              console.error(err);
+              res.status(400).send('Error Creating User.');
+            });
         })
-        .catch((err) => {
-          console.error(err);
-          res.status(400).send('Error Creating User.');
-        });
-
-      // // Hash Password
-      // bcrypt.genSalt(10, (err, salt) =>
-      //   bcrypt.hash(newUser.Password, salt, (err, hash) => {
-      //     if (err) {
-      //       console.error(err);
-      //     }
-      //     // set password to hash
-      //     newUser.Password = hash;
-
-      // newUser.save().then((user) => {
-      //   res.send({ message: 'User Successfully Created!' });
-      // });
-      //       .catch((err) => {
-      //         console.error(err);
-      //         res.status(400).send('Error Creating User!');
-      //       });
-      //   })
-      // );
+      );
     }
   });
 };
@@ -61,6 +52,36 @@ exports.getAllUsers = async (req, res) => {
     console.error(err);
     res.status(404).send('Failed to retieve Users.');
   }
+};
+
+// Login a User
+exports.loginUser = async (req, res) => {
+  const { Email, Password } = req.body;
+
+  User.findOne({ Email: Email }, (err, user) => {
+    if (err) {
+      console.error(err);
+      res.send('An error Occured');
+      return;
+    }
+    if (!user) {
+      res.send('User not found');
+    }
+
+    console.log(user.Password);
+    console.log(Password);
+
+    bcrypt.compare(Password, user.Password, (err, isMatch) => {
+      if (err) {
+        console.error(err);
+      }
+      if (isMatch) {
+        res.send('Passwords match');
+      } else {
+        res.send('Passwords do not match');
+      }
+    });
+  });
 };
 
 // Upload File
@@ -156,6 +177,7 @@ exports.createPhoto = async (req, res) => {
     });
 };
 
+// Get all photos
 exports.getAllPhotos = async (req, res) => {
   try {
     const photos = await Photo.find();
