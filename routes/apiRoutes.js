@@ -5,6 +5,8 @@ const apiController = require("../controllers/apiController");
 
 const router = express.Router();
 
+router.get('/login', (req, res) => res.send('Login Page'))
+
 // Routes
 router.route("/users/new").post(apiController.createUser);
 router.route("/users").get(apiController.getAllUsers);

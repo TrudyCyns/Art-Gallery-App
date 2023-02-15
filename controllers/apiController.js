@@ -1,29 +1,42 @@
-const User = require("../models/User");
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
 
-const processFile = require("../middleware/upload");
-const { format } = require("util");
-const { Storage } = require("@google-cloud/storage");
+const processFile = require('../middleware/upload');
+const { format } = require('util');
+const { Storage } = require('@google-cloud/storage');
 // Instantiate a storage client with credentials
-const storage = new Storage({ keyFilename: "google-cloud-key.json" });
-const bucket = storage.bucket("art-gallery-bucket-app");
+const storage = new Storage({ keyFilename: 'google-cloud-key.json' });
+const bucket = storage.bucket('art-gallery-bucket-app');
 
 // Create a User
 exports.createUser = async (req, res, next) => {
   const { firstName, lastName, Email, Password } = req.body;
   User.findOne({ Email }).then((user) => {
     if (user) {
-      res.send({ message: "Email already exists" });
+      res.send({ message: 'Email already exists' });
     } else {
       const newUser = new User({ firstName, lastName, Email, Password });
-      newUser
-        .save()
-        .then((user) => {
-          res.send({ message: "User Successfully Created!" });
+
+      // Hash Password
+      bcrypt.genSalt(10, (err, salt) =>
+        bcrypt.hash(newUser.Password, salt, (err, hash) => {
+          if (err) {
+            console.error(err);
+          }
+          // set password to hash
+          newUser.Password = hash;
+
+          newUser
+            .save()
+            .then((user) => {
+              res.send({ message: 'User Successfully Created!' });
+            })
+            .catch((err) => {
+              console.error(err);
+              res.status(400).send('Error Creating User!');
+            });
         })
-        .catch((err) => {
-          console.error(err);
-          res.status(400).send("Error Creating User!");
-        });
+      );
     }
   });
 };
@@ -37,7 +50,7 @@ exports.getAllUsers = async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.status(404).send("Failed to retieve Users.");
+    res.status(404).send('Failed to retieve Users.');
   }
 };
 
@@ -47,7 +60,7 @@ exports.uploadFile = async (req, res) => {
     await processFile(req, res);
 
     if (!req.file) {
-      return res.status(400).send({ message: "Please upload a file!" });
+      return res.status(400).send({ message: 'Please upload a file!' });
     }
     // Create a new blob in the bucket and upload the file data.
     const blob = bucket.file(req.file.originalname);
@@ -55,11 +68,11 @@ exports.uploadFile = async (req, res) => {
       resumable: false,
     });
 
-    blobStream.on("error", (err) => {
+    blobStream.on('error', (err) => {
       res.status(500).send({ message: err.message });
     });
 
-    blobStream.on("finish", async (data) => {
+    blobStream.on('finish', async (data) => {
       // Create URL for directly file access via HTTP.
       const publicUrl = format(
         `https://storage.googleapis.com/${bucket.name}/${blob.name}`
@@ -69,7 +82,7 @@ exports.uploadFile = async (req, res) => {
         // Make the file public
         await bucket.file(req.file.originalname).makePublic();
         res.status(200).send({
-          message: "Uploaded the file successfully: " + req.file.originalname,
+          message: 'Uploaded the file successfully: ' + req.file.originalname,
           url: publicUrl,
         });
       } catch {
@@ -80,16 +93,16 @@ exports.uploadFile = async (req, res) => {
       }
 
       res.status(200).send({
-        message: "Uploaded the file successfully: " + req.file.originalname,
+        message: 'Uploaded the file successfully: ' + req.file.originalname,
         url: publicUrl,
       });
     });
 
     blobStream.end(req.file.buffer);
   } catch (error) {
-    if (err.code == "LIMIT_FILE_SIZE") {
+    if (err.code == 'LIMIT_FILE_SIZE') {
       return res.status(500).send({
-        message: "File size cannot be larger than 2MB!",
+        message: 'File size cannot be larger than 2MB!',
       });
     }
 
@@ -117,7 +130,7 @@ exports.getFiles = async (req, res) => {
     console.log(err);
 
     res.status(500).send({
-      message: "Unable to read list of files!",
+      message: 'Unable to read list of files!',
     });
   }
 };
