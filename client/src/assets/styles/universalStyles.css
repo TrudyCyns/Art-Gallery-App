@@ -22,3 +22,7 @@
 .border-bottom {
   border-color: var(--platinum) !important;
 }
+
+.text-oxford-blue {
+  color: var(--oxford-blue) !important;
+}

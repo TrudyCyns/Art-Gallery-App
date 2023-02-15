@@ -10,7 +10,7 @@ function Login(props) {
       <main className="p-3">
         <Container className="p-3 bg-light rounded">
           <Tabs
-            defaultActiveKey="profile"
+            defaultActiveKey="login"
             id="fill-tab-example"
             className="mb-3"
             fill
