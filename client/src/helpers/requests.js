@@ -52,4 +52,22 @@ const createFormData = (file) => {
   return data;
 };
 
-export { postPhotoDetails, uploadPhoto, createFormData, getPhotos };
+const registerUser = async (data) => {
+  try {
+    const res = await axios.post(`${baseUrl}/users/new`, data, {
+      headers: { Accept: '*/*', 'Content-Type': 'application/json' },
+    });
+
+    console.log(res.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export {
+  postPhotoDetails,
+  uploadPhoto,
+  createFormData,
+  getPhotos,
+  registerUser,
+};

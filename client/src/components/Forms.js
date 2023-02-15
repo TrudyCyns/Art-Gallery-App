@@ -10,7 +10,7 @@ import {
   signupValidationSchema,
 } from '../validation/ValidationSchemas';
 import { useSelector } from 'react-redux';
-import { postPhotoDetails } from '../helpers/requests';
+import { postPhotoDetails, registerUser } from '../helpers/requests';
 
 function LoginForm(props) {
   return (
@@ -78,7 +78,8 @@ function SignupForm(props) {
         }}
         validationSchema={signupValidationSchema}
         onSubmit={(values) => {
-          alert(values);
+          console.log({ ...values, ConfirmPassword: undefined });
+          registerUser({ ...values, ConfirmPassword: undefined });
         }}
       >
         {({ handleSubmit, errors }) => (
@@ -153,8 +154,8 @@ function PhotoUploadForm(props) {
         }}
         validationSchema={photoUploadValidationSchema}
         onSubmit={(values) => {
-          console.info({...values, photoUrl})
-          postPhotoDetails({...values, photoUrl});
+          console.info({ ...values, photoUrl });
+          postPhotoDetails({ ...values, photoUrl });
         }}
       >
         {({ handleSubmit, errors }) => (

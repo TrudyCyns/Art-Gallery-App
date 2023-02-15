@@ -16,7 +16,7 @@ function NavBar() {
             </Nav>
             <Nav className="d-flex align-items-center d-flex flex-row">
               <Nav.Item className="mx-2">
-                <Button href="/login" className="rounded">Login</Button>
+                <Button href="/login" className="rounded">Login / Sign Up</Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>
