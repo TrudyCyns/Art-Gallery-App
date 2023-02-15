@@ -7,8 +7,7 @@ require("dotenv").config();
 const config = require("./config/database");
 
 // Import Routes
-const userRoutes = require('./routes/userRoutes')
-const photoRoutes = require('./routes/photoRoutes')
+const apiRoutes = require('./routes/apiRoutes')
 
 const app = express();
 
@@ -27,10 +26,10 @@ db.on("error", (err) => {
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json())
 
 // Routes
-app.use('/', userRoutes);
-app.use('/photos', photoRoutes);
+app.use('/api', apiRoutes);
 
 // Handle Non existent Routes
 app.get('*', (req, res) => {
