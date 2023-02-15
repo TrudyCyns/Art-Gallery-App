@@ -4,6 +4,12 @@ import { Form, Button } from "react-bootstrap";
 
 import { TextArea, TextField, UploadField } from "./FormComponents";
 
+import {
+  loginValidationSchema,
+  photoUploadValidationSchema,
+  signupValidationSchema,
+} from "../validation/ValidationSchemas";
+
 function LoginForm(props) {
   return (
     <div className="p-3">
@@ -12,6 +18,7 @@ function LoginForm(props) {
           Email: "",
           Password: "",
         }}
+        validationSchema={loginValidationSchema}
         onSubmit={(values) => {
           alert(values);
         }}
@@ -39,7 +46,7 @@ function LoginForm(props) {
             </Form.Group> */}
 
             <div className="d-flex flex-column align-items-center">
-              <Button href="/dashboard" className="w-50 rounded">
+              <Button className="w-50 rounded" type="submit">
                 Login
               </Button>
               <a
@@ -67,6 +74,7 @@ function SignupForm(props) {
           Password: "",
           ConfirmPassword: "",
         }}
+        validationSchema={signupValidationSchema}
         onSubmit={(values) => {
           alert(values);
         }}
@@ -119,7 +127,7 @@ function SignupForm(props) {
             </div>
 
             <div className="d-flex flex-column align-items-center">
-              <Button href="/login" className="w-50 rounded">
+              <Button className="w-50 rounded" type="submit">
                 Sign Up
               </Button>
             </div>
@@ -138,7 +146,10 @@ function PhotoUploadForm(props) {
           Title: "",
           Description: "",
         }}
-        onSubmit={(values) => {}}
+        validationSchema={photoUploadValidationSchema}
+        onSubmit={(values) => {
+          alert(values);
+        }}
       >
         {({ handleSubmit, errors }) => (
           <Form onSubmit={handleSubmit}>
@@ -158,6 +169,12 @@ function PhotoUploadForm(props) {
               placeholder="A description of The Greenlands photo"
               errors={errors}
             />
+
+            <div className="d-flex flex-column align-items-center">
+              <Button className="w-50 rounded" type="submit">
+                Submit
+              </Button>
+            </div>
           </Form>
         )}
       </Formik>
