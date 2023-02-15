@@ -1,22 +1,24 @@
-import React from "react";
-import { Formik } from "formik";
-import { Form, Button } from "react-bootstrap";
+import React from 'react';
+import { Formik } from 'formik';
+import { Form, Button } from 'react-bootstrap';
 
-import { TextArea, TextField, UploadField } from "./FormComponents";
+import { TextArea, TextField, UploadField } from './FormComponents';
 
 import {
   loginValidationSchema,
   photoUploadValidationSchema,
   signupValidationSchema,
-} from "../validation/ValidationSchemas";
+} from '../validation/ValidationSchemas';
+import { useSelector } from 'react-redux';
+import { postPhotoDetails } from '../helpers/requests';
 
 function LoginForm(props) {
   return (
     <div className="p-3">
       <Formik
         initialValues={{
-          Email: "",
-          Password: "",
+          Email: '',
+          Password: '',
         }}
         validationSchema={loginValidationSchema}
         onSubmit={(values) => {
@@ -68,11 +70,11 @@ function SignupForm(props) {
     <div className="p-3">
       <Formik
         initialValues={{
-          firstName: "",
-          lastName: "",
-          Email: "",
-          Password: "",
-          ConfirmPassword: "",
+          firstName: '',
+          lastName: '',
+          Email: '',
+          Password: '',
+          ConfirmPassword: '',
         }}
         validationSchema={signupValidationSchema}
         onSubmit={(values) => {
@@ -139,16 +141,20 @@ function SignupForm(props) {
 }
 
 function PhotoUploadForm(props) {
+  const photoUrl = useSelector((store) => store.photoStore.photoData);
+
+  console.log('URL in form data: ', photoUrl);
   return (
     <div>
       <Formik
         initialValues={{
-          Title: "",
-          Description: "",
+          Title: '',
+          Description: '',
         }}
         validationSchema={photoUploadValidationSchema}
         onSubmit={(values) => {
-          alert(values);
+          console.info({...values, photoUrl})
+          postPhotoDetails({...values, photoUrl});
         }}
       >
         {({ handleSubmit, errors }) => (

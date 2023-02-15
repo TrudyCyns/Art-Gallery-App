@@ -1,26 +1,39 @@
-// import { useEffect, useState } from "react";
-// import { useSelector } from "react-redux";
+import { useEffect, useState } from 'react';
 
-// import { createUploadData, uploadFile } from "../helper/requests";
+import { createFormData, uploadPhoto } from './../helpers/requests';
+import { useDispatch } from 'react-redux';
 
-export default function Attachment({ attach, description, name }) {
-  // const [file, setFile] = useState(null);
+import { updatePhotoData } from './../store/photoSlice';
 
-  // const formData = useSelector((store) => store.kyc.formData);
+export default function Attachment({ name }) {
+  const [file, setFile] = useState(null);
+  const [url, setUrl] = useState('');
 
-  // const handleChange = (event) => {
-  //   setFile(event.target.files[0]);
-  // };
+  const handleChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!file) {
+      return;
+    }
+
+    console.log('File in state: ', file);
+
+    let fileInfo = createFormData(file);
+
+    uploadPhoto(fileInfo, setUrl);
+
+    dispatch(updatePhotoData(url));
+    console.log('Post Dispatch URL: ',url);
+  }, [file, url, dispatch]);
 
   // useEffect(() => {
-  //   if (!file) {
-  //     return;
+  //   if(url) {
   //   }
-
-  //   let fileInfo = createUploadData(formData, file, name);
-
-  //   uploadFile(fileInfo);
-  // }, [file, formData, name]);
+  // })
 
   return (
     <div className="mb-3">
@@ -28,8 +41,8 @@ export default function Attachment({ attach, description, name }) {
         type="file"
         className="form-control"
         name={name}
-        accept="image/png, image/jpeg"
-        // onChange={handleChange}
+        accept=".png, .jpg, .jpeg"
+        onChange={handleChange}
       />
     </div>
   );
