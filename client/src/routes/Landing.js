@@ -10,7 +10,7 @@ export default function LandingPage() {
   const [modalShow, setModalShow] = useState(false);
 
   return (
-    <div className="bg-black">
+    <div className="bg-black vh-100 h-100">
       <NavBar />
       <main className="text-white mt-5 pt-5">
         <Container>

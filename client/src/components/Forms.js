@@ -21,7 +21,7 @@ function LoginForm(props) {
             <TextField
               name="Email"
               label="Email"
-              placeholder="info@business.com"
+              placeholder="example@email.com"
               errors={errors}
               type="email"
             />
@@ -39,7 +39,7 @@ function LoginForm(props) {
             </Form.Group> */}
 
             <div className="d-flex flex-column align-items-center">
-              <Button href="/dashboard" className="w-50 rounded-pill">
+              <Button href="/dashboard" className="w-50 rounded">
                 Login
               </Button>
               <a
@@ -121,7 +121,7 @@ function SignupForm(props) {
             <div className="d-flex flex-column align-items-center">
               <Button
                 href="/login"
-                className="w-50 rounded-pill"
+                className="w-50 rounded"
               >
                 Sign Up
               </Button>

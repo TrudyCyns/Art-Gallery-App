@@ -7,7 +7,7 @@ function Login(props) {
   return (
     <div className="vh-100 bg-black">
       <LogoNavbar />
-      <main className="p-3">
+      <main className="p-5">
         <Container className="p-3 bg-light rounded">
           <Tabs
             defaultActiveKey="login"
