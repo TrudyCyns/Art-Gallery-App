@@ -63,9 +63,9 @@ function SignupForm(props) {
         initialValues={{
           firstName: "",
           lastName: "",
-          Phone: "",
           Email: "",
           Password: "",
+          ConfirmPassword: "",
         }}
         onSubmit={(values) => {
           alert(values);
@@ -109,7 +109,7 @@ function SignupForm(props) {
                 type="password"
               />
               <TextField
-                name="Password"
+                name="ConfirmPassword"
                 label="Confirm Password"
                 placeholder="Confirm Password"
                 errors={errors}
@@ -119,10 +119,7 @@ function SignupForm(props) {
             </div>
 
             <div className="d-flex flex-column align-items-center">
-              <Button
-                href="/login"
-                className="w-50 rounded"
-              >
+              <Button href="/login" className="w-50 rounded">
                 Sign Up
               </Button>
             </div>
