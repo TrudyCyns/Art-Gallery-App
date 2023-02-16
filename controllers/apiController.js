@@ -111,15 +111,6 @@ exports.uploadFile = async (req, res) => {
         message: 'Uploaded the file successfully: ' + req.file.originalname,
         url: publicUrl,
       });
-      // try {
-      //   // Make the file public
-      //   await bucket.file(req.file.originalname).makePublic();
-      // } catch {
-      //   return res.status(500).send({
-      //     message: `Uploaded the file successfully: ${req.file.originalname}, but public access is denied!`,
-      //     url: publicUrl,
-      //   });
-      // }
     });
 
     blobStream.end(req.file.buffer);

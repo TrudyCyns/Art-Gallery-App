@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { Button, Col, Container, Figure, Image, Row } from 'react-bootstrap';
 
 import { NavBar } from './../components/Navs';
 
@@ -24,7 +24,7 @@ export default function LandingPage() {
         <Container>
           <Row className="p-1">
             <Col>
-              <Button onClick={() => setModalShow(true)}>Upload Image</Button>
+              <Button onClick={() => setModalShow(true)}>Upload Photo</Button>
               <PhotoUploadModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
@@ -34,31 +34,31 @@ export default function LandingPage() {
           <Row>
             <Col className="py-3">
               <div className="d-flex align-items-center justify-content-evenly flex-wrap">
-                {photos.length > 0
-                  ? photos.map((photo, index) => {
-                      return (
-                        <>
-                          <Image
+                {photos.length > 0 ? (
+                  photos.map((photo, index) => {
+                    return (
+                      <>
+                        <Figure key={index}>
+                          <Figure.Image
                             width={200}
-                            height={200}
                             src={photo.photoUrl}
-                            key={index}
-                            className='p-2'
-                          />
-                        </>
-                      );
-                    })
-                  : null}
-                {/* <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" />
-                <Image src="https://picsum.photos/200" className="p-2" /> */}
+                            className="p-1"
+                            alt="This image was deleted."
+                            height={200}
+                          ></Figure.Image>
+                          <Figure.Caption className='p-1'>
+                            <p className="h4 text-platinum">{photo.Title}</p>
+                            <p className="h6 text-white">{photo.Description}</p>
+                          </Figure.Caption>
+                        </Figure>
+                      </>
+                    );
+                  })
+                ) : (
+                  <p className="alert alert-warning" role="alert">
+                    There are no images in the database. Upload a Photo to view.
+                  </p>
+                )}
               </div>
             </Col>
           </Row>
