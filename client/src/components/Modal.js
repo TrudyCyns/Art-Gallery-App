@@ -15,7 +15,7 @@ function PhotoUploadModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <PhotoUploadForm />
+        <PhotoUploadForm  />
       </Modal.Body>
     </Modal>
   );

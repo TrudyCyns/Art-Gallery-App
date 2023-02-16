@@ -123,7 +123,7 @@ export default function DashboardPage() {
             <Container className="text-center">
               <div className="alert alert-warning">
                 <p>You can not access this page without logging in.</p>
-                <a href="/login">Go to Login</a>
+                <a className='alert-link' href="/login">Go to Login</a>
               </div>
             </Container>
           </main>

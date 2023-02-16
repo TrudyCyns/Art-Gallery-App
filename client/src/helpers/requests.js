@@ -4,18 +4,16 @@ import { updateUserData } from '../store/authSlice.js';
 
 const baseUrl = 'http://localhost:5000/api';
 
-const uploadPhoto = async (data, setUrl) => {
+const uploadPhoto = async (data, setUrl, setuploadMessage) => {
   try {
     const res = await axios.post(`${baseUrl}/photos/upload`, data, {
       headers: { Accept: '*/*', 'Content-Type': 'multipart/form-data' },
     });
-    console.log(res.data);
 
     const photoUrl = res.data.url;
 
-    console.log('uploadPhoto photoUrl: ', photoUrl);
-
     setUrl(photoUrl);
+    setuploadMessage('Photo was successfully Uploaded!')
   } catch (error) {
     alert(error);
     console.error(error);
@@ -28,7 +26,7 @@ const postPhotoDetails = async (data) => {
       headers: { Accept: '*/*', 'Content-Type': 'application/json' },
     });
 
-    console.log(res.data);
+    alert('Successfully Saved Image!')
   } catch (err) {
     console.error(err);
   }

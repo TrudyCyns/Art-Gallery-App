@@ -8,6 +8,7 @@ import { updatePhotoData } from './../store/photoSlice';
 export default function Attachment({ name }) {
   const [file, setFile] = useState(null);
   const [url, setUrl] = useState('');
+  const [uploadMessage, setUploadMessage] = useState('');
 
   const handleChange = (event) => {
     setFile(event.target.files[0]);
@@ -24,19 +25,18 @@ export default function Attachment({ name }) {
 
     let fileInfo = createFormData(file);
 
-    uploadPhoto(fileInfo, setUrl);
+    uploadPhoto(fileInfo, setUrl, setUploadMessage);
 
     dispatch(updatePhotoData(url));
-    console.log('Post Dispatch URL: ',url);
   }, [file, url, dispatch]);
-
-  // useEffect(() => {
-  //   if(url) {
-  //   }
-  // })
 
   return (
     <div className="mb-3">
+      {uploadMessage && (
+        <div className="alert alert-success py-1" role="alert">
+          {uploadMessage}
+        </div>
+      )}
       <input
         type="file"
         className="form-control"

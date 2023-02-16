@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { TextArea, TextField, UploadField } from './FormComponents';
 
@@ -9,9 +11,8 @@ import {
   photoUploadValidationSchema,
   signupValidationSchema,
 } from '../validation/ValidationSchemas';
-import { useSelector } from 'react-redux';
+
 import { loginUser, postPhotoDetails, registerUser } from '../helpers/requests';
-import { useNavigate } from 'react-router-dom';
 
 function LoginForm(props) {
   const navigate = useNavigate();
@@ -139,11 +140,11 @@ function SignupForm(props) {
   );
 }
 
-function PhotoUploadForm(props) {
+function PhotoUploadForm() {
+
   const photoUrl = useSelector((store) => store.photoStore.photoData);
   const userDetails = useSelector((store) => store.authStore.userData);
 
-  console.log('URL in form data: ', photoUrl);
   return (
     <div>
       <Formik
@@ -153,7 +154,6 @@ function PhotoUploadForm(props) {
         }}
         validationSchema={photoUploadValidationSchema}
         onSubmit={(values) => {
-          console.info({ ...values, photoUrl });
           postPhotoDetails({
             ...values,
             photoUrl,
