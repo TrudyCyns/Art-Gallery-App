@@ -5,7 +5,6 @@ const loginValidationSchema = object().shape({
     .email("Please enter a valid email address")
     .required("Please provide an email address"),
   Password: string()
-    .min(8, "Password mut be 8 or more characters")
     .required("Please provide a password"),
 });
 

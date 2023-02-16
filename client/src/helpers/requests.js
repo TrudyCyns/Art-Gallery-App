@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { store } from './../store';
+import { updateUserData } from '../store/authSlice.js';
 
 const baseUrl = 'http://localhost:5000/api';
 
@@ -64,10 +66,30 @@ const registerUser = async (data) => {
   }
 };
 
+const loginUser = async (data, navigate) => {
+  try {
+    const res = await axios.post(`${baseUrl}/login`, data, {
+      headers: { Accept: '*/*', 'Content-Type': 'application/json' },
+    });
+
+    console.log(res.data);
+
+    if (res.data.message === 'User Successfully logged in') {
+      store.dispatch(updateUserData(res.data.user));
+      navigate('/dashboard')
+    } else {
+      alert(res.data.message);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export {
   postPhotoDetails,
   uploadPhoto,
   createFormData,
   getPhotos,
   registerUser,
+  loginUser,
 };

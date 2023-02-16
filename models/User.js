@@ -29,7 +29,7 @@ const User = mongoose.model('User', userSchema);
 
 // Method to retrieve user for login (returns only Email and Password)
 User.findByEmailForLogin = async (email) => {
-  return User.findOne({ Email: email }).select('Email Password').exec();
+  return User.findOne({ Email: email }).select('Email Password firstName').exec();
 };
 
 module.exports = User;

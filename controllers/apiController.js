@@ -61,25 +61,32 @@ exports.loginUser = async (req, res) => {
     const user = await User.findByEmailForLogin(Email);
 
     if (!user) {
-      res.send('User not found');
+      res.send({ message: 'User not found' });
       return;
     }
 
     bcrypt.compare(Password, user.Password, (err, isMatch) => {
       if (err) {
         console.error(err);
-        res.send('An error occurred');
+        res.send({ message: 'An error occured!' });
         return;
       }
       if (isMatch) {
-        res.send('Passwords match');
+        res.send({
+          message: 'User Successfully logged in',
+          user: {
+            Email: user.Email,
+            firstName: user.firstName,
+            isAuthenticated: true,
+          },
+        });
       } else {
-        res.send('Passwords do not match');
+        res.send({ message: 'Incorrect Password' });
       }
     });
   } catch (error) {
     console.error(error);
-    res.send('An error occurred');
+    res.send({ message: 'An error occured!' });
   }
 };
 

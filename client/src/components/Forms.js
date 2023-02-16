@@ -10,9 +10,11 @@ import {
   signupValidationSchema,
 } from '../validation/ValidationSchemas';
 import { useSelector } from 'react-redux';
-import { postPhotoDetails, registerUser } from '../helpers/requests';
+import { loginUser, postPhotoDetails, registerUser } from '../helpers/requests';
+import {useNavigate} from 'react-router-dom'
 
 function LoginForm(props) {
+  const navigate = useNavigate()
   return (
     <div className="p-3">
       <Formik
@@ -22,7 +24,7 @@ function LoginForm(props) {
         }}
         validationSchema={loginValidationSchema}
         onSubmit={(values) => {
-          alert(values);
+          loginUser({ ...values }, navigate);
         }}
       >
         {({ handleSubmit, errors }) => (
@@ -42,10 +44,6 @@ function LoginForm(props) {
               errors={errors}
               type="password"
             />
-
-            {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Remember me" />
-            </Form.Group> */}
 
             <div className="d-flex flex-column align-items-center">
               <Button className="w-50 rounded" type="submit">
