@@ -1,16 +1,16 @@
 /* eslint-disable no-restricted-globals */
-import { Button, Container, Image } from "react-bootstrap";
-import { MdArrowBack } from "react-icons/md";
-import { IconContext } from "react-icons";
+import { Button, Container, Image } from 'react-bootstrap';
+import { MdArrowBack } from 'react-icons/md';
+import { IconContext } from 'react-icons';
 
-import { LogoNavbar } from "./../components/Navs";
+import { LogoNavbar } from './../components/Navs';
 
-import "./../assets/styles/universalStyles.css";
-import ErrorIcon from "./../assets/images/404.svg";
+import './../assets/styles/universalStyles.css';
+import ErrorIcon from './../assets/images/404.svg';
 
 export default function ErrorPage() {
   return (
-    <div className="bg-black vh-100">
+    <div className="bg-black  ">
       <LogoNavbar />
       <main className="text-white pt-5">
         <Container>
@@ -22,9 +22,9 @@ export default function ErrorPage() {
               or the link is mistypes. Here is a link to go back.
             </p>
             <Button className="rounded-pill" onClick={() => history.back()}>
-              <IconContext.Provider value={{ className: "react-icons" }}>
+              <IconContext.Provider value={{ className: 'react-icons' }}>
                 <MdArrowBack />
-              </IconContext.Provider>{" "}
+              </IconContext.Provider>{' '}
               Go Back
             </Button>
           </div>

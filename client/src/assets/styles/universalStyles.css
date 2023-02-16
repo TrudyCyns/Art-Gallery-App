@@ -1,5 +1,26 @@
 @import url(./colors.css);
 
+body,
+html {
+  height: 100%;
+  background-color: black;
+}
+@media (max-height: 100vh) {
+  html,
+  body {
+    height: 100vh;
+    background-color: black;
+  }
+}
+
+@media (min-height: 100vh) {
+  html,
+  body {
+    height: 100%;
+    background-color: black;
+  }
+}
+
 .ff-averta {
   font-family: Averta, sans-serif;
 }

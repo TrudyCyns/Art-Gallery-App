@@ -11,14 +11,14 @@ export default function LandingPage() {
   const [modalShow, setModalShow] = useState(false);
   const [photos, setPhotos] = useState([]);
 
-  const unAuthdUploader = ''
+  const unAuthdUploader = '';
 
   useEffect(() => {
-    getUserPhotos( unAuthdUploader, setPhotos);
+    getUserPhotos(unAuthdUploader, setPhotos);
   }, []);
 
   return (
-    <div className="bg-black vh-100 h-100">
+    <div className="bg-black     ">
       <NavBar />
       <main className="text-white mt-5 pt-5">
         <Container>
@@ -46,7 +46,7 @@ export default function LandingPage() {
                             alt="This image was deleted."
                             height={200}
                           ></Figure.Image>
-                          <Figure.Caption className='p-1'>
+                          <Figure.Caption className="p-1">
                             <p className="h4 text-platinum">{photo.Title}</p>
                             <p className="h6 text-white">{photo.Description}</p>
                           </Figure.Caption>

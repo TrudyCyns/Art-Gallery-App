@@ -1,11 +1,11 @@
-import React from "react";
-import { LogoNavbar } from "../components/Navs";
-import { Container, Tabs, Tab } from "react-bootstrap";
-import { LoginForm, SignupForm } from "../components/Forms";
+import React from 'react';
+import { LogoNavbar } from '../components/Navs';
+import { Container, Tabs, Tab } from 'react-bootstrap';
+import { LoginForm, SignupForm } from '../components/Forms';
 
 function Login(props) {
   return (
-    <div className="vh-100 bg-black">
+    <div className="  bg-black">
       <LogoNavbar />
       <main className="p-5">
         <Container className="p-3 bg-light rounded">
