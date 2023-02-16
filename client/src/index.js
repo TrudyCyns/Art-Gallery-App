@@ -13,9 +13,11 @@ import LoginPage from './routes/Login';
 import DashboardPage from './routes/Dashboard';
 import GalleryPage from './routes/Gallery';
 import ErrorPage from './routes/Error';
+import UploadPage from './routes/Upload';
 
 const router = createBrowserRouter([
   { path: '/', element: <LandingPage /> },
+  { path: '/upload', element: <UploadPage /> },
   { path: '/login', element: <LoginPage /> },
   { path: '/dashboard', element: <DashboardPage /> },
   { path: '/myphotos', element: <GalleryPage /> },

@@ -141,6 +141,7 @@ function SignupForm(props) {
 }
 
 function PhotoUploadForm() {
+  const navigate = useNavigate()
 
   const photoUrl = useSelector((store) => store.photoStore.photoData);
   const userDetails = useSelector((store) => store.authStore.userData);
@@ -158,7 +159,7 @@ function PhotoUploadForm() {
             ...values,
             photoUrl,
             uploadedBy: userDetails.Email ? userDetails.Email : '',
-          });
+          }, navigate);
         }}
       >
         {({ handleSubmit, errors }) => (

@@ -20,13 +20,14 @@ const uploadPhoto = async (data, setUrl, setuploadMessage) => {
   }
 };
 
-const postPhotoDetails = async (data) => {
+const postPhotoDetails = async (data, navigate) => {
   try {
     const res = await axios.post(`${baseUrl}/photos/new`, data, {
       headers: { Accept: '*/*', 'Content-Type': 'application/json' },
     });
 
     alert('Successfully Saved Image!')
+    navigate('/')
   } catch (err) {
     console.error(err);
   }

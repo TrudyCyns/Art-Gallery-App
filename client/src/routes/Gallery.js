@@ -1,6 +1,6 @@
-import { useState, useEffect, Figure } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Col, Container,  Row } from 'react-bootstrap';
+import { Button, Col, Container, Row, Figure } from 'react-bootstrap';
 
 import { DashNavbar, LogoNavbar } from './../components/Navs';
 import { PhotoUploadModal } from '../components/Modal';
@@ -29,7 +29,7 @@ export default function GalleryPage() {
               <Row className="p-1">
                 <Col>
                   <Button onClick={() => setModalShow(true)}>
-                    Upload Image
+                    Upload Photo
                   </Button>
                   <PhotoUploadModal
                     show={modalShow}
@@ -80,7 +80,9 @@ export default function GalleryPage() {
             <Container className="text-center">
               <div className="alert alert-warning">
                 <p>You can not access this page without logging in.</p>
-                <a className='alert-link' href="/login">Go to Login</a>
+                <a className="alert-link" href="/login">
+                  Go to Login
+                </a>
               </div>
             </Container>
           </main>

@@ -39,13 +39,9 @@ export default function DashboardPage() {
                 <div className="d-flex justify-content-between px-4 pt-2">
                   <p className="text-center h3 text-platinum">My Photos</p>
                   <div>
-                    <Button onClick={() => setModalShow(true)}>
+                    <Button variant='outline-primary' href='/upload'>
                       Upload Photo
                     </Button>
-                    <PhotoUploadModal
-                      show={modalShow}
-                      onHide={() => setModalShow(false)}
-                    />
                   </div>
                 </div>
                 <Col className="py-3">

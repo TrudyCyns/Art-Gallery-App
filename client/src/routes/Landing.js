@@ -18,21 +18,20 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="bg-black     ">
+    <div className="">
       <NavBar />
       <main className="text-white mt-5 pt-5">
         <Container>
-          <Row className="p-1">
-            <Col>
-              <Button onClick={() => setModalShow(true)}>Upload Photo</Button>
-              <PhotoUploadModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-              />
-            </Col>
-          </Row>
           <Row>
             <Col className="py-3">
+            <div className="d-flex justify-content-between px-4 pt-2">
+                  <p className="text-center h3 text-platinum">Photos</p>
+                  <div>
+                    <Button variant='outline-primary' href='/upload'>
+                      Upload Photo
+                    </Button>
+                  </div>
+                </div>
               <div className="d-flex align-items-center justify-content-evenly flex-wrap">
                 {photos.length > 0 ? (
                   photos.map((photo, index) => {
