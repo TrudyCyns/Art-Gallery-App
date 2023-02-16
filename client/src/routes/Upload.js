@@ -8,7 +8,7 @@ function UploadPage(props) {
     <div className="">
       <LogoNavbar />
       <main className="p-5">
-        <Container className="p-5 bg-light rounded">
+        <Container className="p-5 bg-light rounded col-lg-6">
           <p className="h3 text-center text-oxford-blue">Upload a Photo</p>
           <PhotoUploadForm />
         </Container>

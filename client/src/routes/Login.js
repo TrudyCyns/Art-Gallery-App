@@ -8,7 +8,7 @@ function Login(props) {
     <div className="">
       <LogoNavbar />
       <main className="p-5">
-        <Container className="p-3 bg-light rounded">
+        <Container className="p-3 bg-light rounded col-lg-6">
           <Tabs
             defaultActiveKey="login"
             id="fill-tab-example"
