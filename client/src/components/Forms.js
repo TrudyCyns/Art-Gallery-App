@@ -11,10 +11,10 @@ import {
 } from '../validation/ValidationSchemas';
 import { useSelector } from 'react-redux';
 import { loginUser, postPhotoDetails, registerUser } from '../helpers/requests';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm(props) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="p-3">
       <Formik
@@ -141,6 +141,7 @@ function SignupForm(props) {
 
 function PhotoUploadForm(props) {
   const photoUrl = useSelector((store) => store.photoStore.photoData);
+  const userDetails = useSelector((store) => store.authStore.userData);
 
   console.log('URL in form data: ', photoUrl);
   return (
@@ -153,7 +154,11 @@ function PhotoUploadForm(props) {
         validationSchema={photoUploadValidationSchema}
         onSubmit={(values) => {
           console.info({ ...values, photoUrl });
-          postPhotoDetails({ ...values, photoUrl });
+          postPhotoDetails({
+            ...values,
+            photoUrl,
+            uploadedBy: userDetails.Email ? userDetails.Email : '',
+          });
         }}
       >
         {({ handleSubmit, errors }) => (

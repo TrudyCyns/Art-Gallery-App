@@ -159,9 +159,9 @@ exports.getFiles = async (req, res) => {
 
 // Create a Photo entry
 exports.createPhoto = async (req, res) => {
-  const { Title, Description, photoUrl } = req.body;
+  const { Title, Description, photoUrl, uploadedBy } = req.body;
 
-  const newPhoto = new Photo({ Title, Description, photoUrl });
+  const newPhoto = new Photo({ Title, Description, photoUrl, uploadedBy });
 
   newPhoto
     .save()

@@ -76,10 +76,25 @@ const loginUser = async (data, navigate) => {
 
     if (res.data.message === 'User Successfully logged in') {
       store.dispatch(updateUserData(res.data.user));
-      navigate('/dashboard')
+      navigate('/dashboard');
     } else {
       alert(res.data.message);
     }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const getUserPhotos = async (data, setUserPhotos) => {
+  try {
+    const res = await axios.get(`${baseUrl}/user/photos`, {
+      params: { uploadedBy: data },
+      headers: { Accept: '*/*' },
+    });
+
+    console.log('User Photos ResData: ', res.data.photos);
+
+    setUserPhotos(res.data.photos)
   } catch (error) {
     console.error(error);
   }
@@ -92,4 +107,5 @@ export {
   getPhotos,
   registerUser,
   loginUser,
+  getUserPhotos,
 };

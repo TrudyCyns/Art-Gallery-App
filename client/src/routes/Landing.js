@@ -5,14 +5,16 @@ import { NavBar } from './../components/Navs';
 
 import './../assets/styles/universalStyles.css';
 import { PhotoUploadModal } from '../components/Modal';
-import { getPhotos } from '../helpers/requests';
+import { getPhotos, getUserPhotos } from '../helpers/requests';
 
 export default function LandingPage() {
   const [modalShow, setModalShow] = useState(false);
   const [photos, setPhotos] = useState([]);
 
+  const unAuthdUploader = ''
+
   useEffect(() => {
-    getPhotos(setPhotos);
+    getUserPhotos( unAuthdUploader, setPhotos);
   }, []);
 
   return (
