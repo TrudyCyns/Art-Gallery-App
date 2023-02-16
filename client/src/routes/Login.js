@@ -5,7 +5,7 @@ import { LoginForm, SignupForm } from '../components/Forms';
 
 function Login(props) {
   return (
-    <div className="  bg-black">
+    <div className="">
       <LogoNavbar />
       <main className="p-5">
         <Container className="p-3 bg-light rounded">

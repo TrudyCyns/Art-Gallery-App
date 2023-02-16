@@ -52,11 +52,65 @@ function LoginForm(props) {
                 Login
               </Button>
               <a
-                href="#forgot"
+                href="/passwordreset"
                 className="text-decoration-none text-oxford-blue fs-small mt-3"
               >
                 Forgot your password?
               </a>
+            </div>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+}
+
+function PasswordResetForm(props) {
+  const navigate = useNavigate();
+
+  return (
+    <div className="p-3">
+      <Formik
+        initialValues={{
+          Email: '',
+          Password: '',
+          ConfirmPassword: '',
+        }}
+        validationSchema={loginValidationSchema}
+        onSubmit={(values) => {
+          alert('This will reset your password.');
+        }}
+      >
+        {({ handleSubmit, errors }) => (
+          <Form onSubmit={handleSubmit}>
+            <TextField
+              name="Email"
+              label="Email"
+              placeholder="example@email.com"
+              errors={errors}
+              type="email"
+            />
+
+            <TextField
+              name="Password"
+              label="Password"
+              placeholder="Password"
+              errors={errors}
+              type="password"
+            />
+
+            <TextField
+              name="Confirm Password"
+              label="Confirm Password"
+              placeholder="Confirm Password"
+              errors={errors}
+              type="password"
+            />
+
+            <div className="d-flex flex-column align-items-center">
+              <Button className="w-50 rounded" type="submit">
+                Reset Password
+              </Button>
             </div>
           </Form>
         )}
@@ -197,4 +251,4 @@ function PhotoUploadForm() {
   );
 }
 
-export { LoginForm, SignupForm, PhotoUploadForm };
+export { LoginForm, SignupForm, PhotoUploadForm, PasswordResetForm };
