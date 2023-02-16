@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { store } from './../store';
 import { updateUserData } from '../store/authSlice.js';
+import { clearPhotoData } from '../store/photoSlice';
 
 const baseUrl = 'http://localhost:5000/api';
 
@@ -13,7 +14,7 @@ const uploadPhoto = async (data, setUrl, setuploadMessage) => {
     const photoUrl = res.data.url;
 
     setUrl(photoUrl);
-    setuploadMessage('Photo was successfully Uploaded!')
+    setuploadMessage('Photo was successfully Uploaded!');
   } catch (error) {
     alert(error);
     console.error(error);
@@ -26,8 +27,9 @@ const postPhotoDetails = async (data, navigate) => {
       headers: { Accept: '*/*', 'Content-Type': 'application/json' },
     });
 
-    alert('Successfully Saved Image!')
-    navigate('/')
+    alert('Successfully Saved Image!');
+    store.dispatch(clearPhotoData());
+    navigate('/');
   } catch (err) {
     console.error(err);
   }
@@ -59,9 +61,14 @@ const registerUser = async (data) => {
       headers: { Accept: '*/*', 'Content-Type': 'application/json' },
     });
 
-    console.log(res.data);
+    if (res.data.message === 'Email already exists') {
+      alert(res.data.message);
+    } else {
+      alert(res.data.message);
+    }
   } catch (error) {
     console.error(error);
+    alert('An error occured.')
   }
 };
 
@@ -93,7 +100,7 @@ const getUserPhotos = async (data, setUserPhotos) => {
 
     console.log('User Photos ResData: ', res.data.photos);
 
-    setUserPhotos(res.data.photos)
+    setUserPhotos(res.data.photos);
   } catch (error) {
     console.error(error);
   }
