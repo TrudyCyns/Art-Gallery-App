@@ -3,14 +3,12 @@ import { useSelector } from 'react-redux';
 import { Button, Col, Container, Row, Figure } from 'react-bootstrap';
 
 import { DashNavbar, LogoNavbar } from './../components/Navs';
-import { PhotoUploadModal } from '../components/Modal';
 
 import './../assets/styles/universalStyles.css';
 import { getUserPhotos } from './../helpers/requests';
 
 export default function GalleryPage() {
   const [userPhotos, setUserPhotos] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
 
   const userDetails = useSelector((store) => store.authStore.userData);
   const isAuthenticated = userDetails.isAuthenticated;
@@ -28,13 +26,9 @@ export default function GalleryPage() {
             <Container>
               <Row className="p-1">
                 <Col>
-                  <Button onClick={() => setModalShow(true)}>
+                  <Button variant="outline-primary" href="/upload">
                     Upload Photo
                   </Button>
-                  <PhotoUploadModal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                  />
                 </Col>
               </Row>
               <Row>

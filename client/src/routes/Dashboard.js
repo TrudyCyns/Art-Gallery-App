@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import { DashNavbar, LogoNavbar } from './../components/Navs';
-import { PhotoUploadModal } from '../components/Modal';
 
 import './../assets/styles/universalStyles.css';
 
@@ -12,7 +11,6 @@ import { getUserPhotos } from './../helpers/requests';
 export default function DashboardPage() {
   const [photos, setPhotos] = useState([]);
   const [userPhotos, setUserPhotos] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
 
   const userDetails = useSelector((store) => store.authStore.userData);
   const isAuthenticated = userDetails.isAuthenticated;

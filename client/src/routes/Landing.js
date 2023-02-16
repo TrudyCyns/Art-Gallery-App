@@ -4,11 +4,9 @@ import { Button, Col, Container, Figure, Row } from 'react-bootstrap';
 import { NavBar } from './../components/Navs';
 
 import './../assets/styles/universalStyles.css';
-import { PhotoUploadModal } from '../components/Modal';
-import { getPhotos, getUserPhotos } from '../helpers/requests';
+import { getUserPhotos } from '../helpers/requests';
 
 export default function LandingPage() {
-  const [modalShow, setModalShow] = useState(false);
   const [photos, setPhotos] = useState([]);
 
   const unAuthdUploader = '';
