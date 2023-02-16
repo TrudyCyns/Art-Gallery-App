@@ -15,8 +15,6 @@ export default function LandingPage() {
     getPhotos(setPhotos);
   }, []);
 
-  console.log('Photos: ', photos);
-
   return (
     <div className="bg-black vh-100 h-100">
       <NavBar />
