@@ -48,6 +48,18 @@ html {
   color: black !important;
 }
 
+.btn-outline-secondary {
+  border-color: var(--powder-blue) !important;
+  color: var(--powder-blue) !important;
+  font-weight: bold !important;
+}
+
+.btn-outline-secondary:hover {
+  border-color: var(--powder-blue) !important;
+  background-color: var(--powder-blue) !important;
+  color: black !important;
+}
+
 .navbar-brand:hover {
   color: var(--orange) !important;
 }
@@ -73,3 +85,5 @@ html {
   font-size: 1.5rem;
   font-weight: normal;
 }
+
+

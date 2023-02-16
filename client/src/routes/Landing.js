@@ -5,8 +5,12 @@ import { NavBar } from './../components/Navs';
 
 import './../assets/styles/universalStyles.css';
 import { getUserPhotos } from '../helpers/requests';
+import { useSelector } from 'react-redux';
 
 export default function LandingPage() {
+  const isAuthenticated = useSelector(
+    (store) => store.authStore.userData.isAuthenticated
+  );
   const [photos, setPhotos] = useState([]);
 
   const unAuthdUploader = '';
@@ -22,15 +26,23 @@ export default function LandingPage() {
         <Container>
           <Row>
             <Col className="py-3">
-            <div className="d-flex justify-content-between px-4 pt-2">
-                  <p className="text-center h3 text-platinum">Photos</p>
-                  <div>
-                    <Button variant='outline-primary' href='/upload'>
-                      Upload Photo
-                    </Button>
-                  </div>
+              <div className="d-flex justify-content-between px-4 pt-2">
+                <p className="text-center h3 text-platinum">Photos</p>
+                <div>
+                  <Button variant="outline-primary" href="/upload">
+                    Upload Photo
+                  </Button>
+                  {isAuthenticated ? (
+                    <>
+                      <span className="px-2">|</span>
+                      <Button variant="outline-secondary" href="/dashboard">
+                        Go to Dashboard
+                      </Button>
+                    </>
+                  ) : null}
                 </div>
-              <div className="d-flex align-items-center justify-content-evenly flex-wrap">
+              </div>
+              <div className="d-flex align-items-center justify-content-evenly flex-wrap pt-3">
                 {photos.length > 0 ? (
                   photos.map((photo, index) => {
                     return (
@@ -52,7 +64,7 @@ export default function LandingPage() {
                     );
                   })
                 ) : (
-                  <p className="alert alert-warning" role="alert">
+                  <p className="alert alert-warning py-4" role="alert">
                     There are no images in the database. Upload a Photo to view.
                   </p>
                 )}

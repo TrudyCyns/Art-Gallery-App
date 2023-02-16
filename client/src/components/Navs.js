@@ -2,11 +2,15 @@ import { Container, Nav, Navbar, Button, Image } from 'react-bootstrap';
 
 import './../assets/styles/Nav.css';
 import './../assets/styles/universalStyles.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { clearUserData } from '../store/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
+  const isAuthenticated = useSelector(
+    (store) => store.authStore.userData.isAuthenticated
+  );
+
   return (
     <header className="border-bottom">
       <Navbar variant="dark" expand="lg" fixed="top" className="bg-black">
@@ -19,7 +23,10 @@ function NavBar() {
             </Nav>
             <Nav className="d-flex align-items-center d-flex flex-row">
               <Nav.Item className="mx-2">
-                <Button href="/login" className="rounded">
+                <Button
+                  href={isAuthenticated ? '/dashboard' : '/login'}
+                  className="rounded"
+                >
                   Login / Sign Up
                 </Button>
               </Nav.Item>
