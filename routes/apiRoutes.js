@@ -5,8 +5,6 @@ const apiController = require('../controllers/apiController');
 
 const router = express.Router();
 
-router.get('/login', (req, res) => res.send('Login Page'));
-
 // Routes
 router.route('/users/new').post(apiController.createUser);
 router.route('/users').get(apiController.getAllUsers);
@@ -15,5 +13,6 @@ router.route('/bucket/list').get(apiController.getFiles);
 router.route('/photos').get(apiController.getAllPhotos);
 router.route('/photos/new').post(apiController.createPhoto);
 router.route('/login').post(apiController.loginUser);
+router.route('/user/photos').get(apiController.getUserPhotos);
 
 module.exports = router;

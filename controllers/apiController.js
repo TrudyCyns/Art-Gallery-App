@@ -184,3 +184,16 @@ exports.getAllPhotos = async (req, res) => {
     res.status(404).send('Failed to retieve Photo Details.');
   }
 };
+
+// Get User photos
+exports.getUserPhotos = async (req, res) => {
+  const user = req.query.uploadedBy;
+
+  try {
+    const photos = await Photo.find({ uploadedBy: user });
+    res.send({ photos });
+  } catch (error) {
+    console.error(err);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
