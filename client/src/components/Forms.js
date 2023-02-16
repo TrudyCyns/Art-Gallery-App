@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { TextArea, TextField, UploadField } from './FormComponents';
 
@@ -66,8 +66,6 @@ function LoginForm(props) {
 }
 
 function PasswordResetForm(props) {
-  const navigate = useNavigate();
-
   return (
     <div className="p-3">
       <Formik
