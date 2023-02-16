@@ -7,7 +7,7 @@
 
 > The project's goal is to develop an image gallery store for users where users may submit their photographs while labeling them with a title and description, login, register with an email and password, and reset their password, and authenticated users with the correct permissions will be be able to see all of their uploaded memories as well as all experiences for unauthenticated users.
 
->The project is designed using NodeJS for the backend (API) and ReactJS (UI) for the frontend.
+>The project is designed using NodeJS for the backend (API) and ReactJS for the frontend.
 
 ### 🏠 [Homepage](https://github.com/TrudyCyns/Art-Gallery-App#readme)
 
