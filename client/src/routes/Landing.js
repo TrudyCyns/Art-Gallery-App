@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Button, Col, Container, Figure, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import { NavBar } from './../components/Navs';
 

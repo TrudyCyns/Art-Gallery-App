@@ -1,4 +1,4 @@
-import { Col, Container, Row, Figure, Button } from 'react-bootstrap';
+import { Col, Container, Row, Button } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 

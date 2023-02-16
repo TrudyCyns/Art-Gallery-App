@@ -1,12 +1,9 @@
 import React from 'react';
 
 import { Figure } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 
 function FigureComponent(props) {
-  const isAuthenticated = useSelector(
-    (store) => store.authStore.userData.isAuthenticated
-  );
+  
   const { photos } = props;
   return (
     <>
