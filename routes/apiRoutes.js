@@ -14,5 +14,6 @@ router.route('/photos').get(apiController.getAllPhotos);
 router.route('/photos/new').post(apiController.createPhoto);
 router.route('/login').post(apiController.loginUser);
 router.route('/user/photos').get(apiController.getUserPhotos);
+router.route('/user/passwordreset').get(apiController.resetPassword);
 
 module.exports = router;

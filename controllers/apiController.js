@@ -197,3 +197,38 @@ exports.getUserPhotos = async (req, res) => {
     res.status(500).json({ error: 'An error occurred' });
   }
 };
+
+// Reset Password
+exports.resetPassword = async (req, res) => {
+  const { Email, newPassword } = req.body;
+  try {
+    // Find user and return firstName, Email and Password only.
+    const user = await User.findByEmailForLogin(Email);
+
+    if (!user) {
+      res.status(400).send({ message: 'User not found' });
+      return;
+    }
+
+    // Hash the new Password
+    bcrypt.genSalt(10, (err, salt) =>
+      bcrypt.hash(newPassword, salt, async (err, hash) => {
+        if (err) {
+          res.status(500).send({ message: 'An error occured' });
+        }
+
+        const hashedNewPassword = hash;
+
+        await User.updateOne(
+          { Email },
+          { $set: { Password: hashedNewPassword } }
+        );
+
+        res.status(200).send('Password reset successfully');
+      })
+    );
+  } catch (error) {
+    console.error(err);
+    res.status(500).send({ message: 'An error occured.' });
+  }
+};
