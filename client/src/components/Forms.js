@@ -76,7 +76,6 @@ function PasswordResetForm(props) {
           Password: '',
           ConfirmPassword: '',
         }}
-        validationSchema={loginValidationSchema}
         onSubmit={(values) => {
           alert('This will reset your password.');
         }}
