@@ -6,6 +6,7 @@ import { NavBar } from './../components/Navs';
 import './../assets/styles/universalStyles.css';
 import { getUserPhotos } from '../helpers/requests';
 import { useSelector } from 'react-redux';
+import FigureComponent from '../components/Img';
 
 export default function LandingPage() {
   const isAuthenticated = useSelector(
@@ -43,31 +44,7 @@ export default function LandingPage() {
                 </div>
               </div>
               <div className="d-flex align-items-center justify-content-evenly flex-wrap pt-3">
-                {photos.length > 0 ? (
-                  photos.map((photo, index) => {
-                    return (
-                      <>
-                        <Figure key={index}>
-                          <Figure.Image
-                            width={200}
-                            src={photo.photoUrl}
-                            className="p-1"
-                            alt="This image was deleted."
-                            height={200}
-                          ></Figure.Image>
-                          <Figure.Caption className="p-1">
-                            <p className="h4 text-platinum">{photo.Title}</p>
-                            <p className="h6 text-white">{photo.Description}</p>
-                          </Figure.Caption>
-                        </Figure>
-                      </>
-                    );
-                  })
-                ) : (
-                  <p className="alert alert-warning py-4" role="alert">
-                    There are no images in the database. Upload a Photo to view.
-                  </p>
-                )}
+                <FigureComponent photos={photos} />
               </div>
             </Col>
           </Row>

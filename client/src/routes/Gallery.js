@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Col, Container, Row, Figure } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 
 import { DashNavbar, LogoNavbar } from './../components/Navs';
 
 import './../assets/styles/universalStyles.css';
 import { getUserPhotos } from './../helpers/requests';
+import FigureComponent from '../components/Img';
 
 export default function GalleryPage() {
   const [userPhotos, setUserPhotos] = useState([]);
@@ -34,32 +35,7 @@ export default function GalleryPage() {
               <Row>
                 <Col className="py-3">
                   <div className="d-flex align-items-center justify-content-evenly flex-wrap">
-                    {userPhotos.length > 0 ? (
-                      userPhotos.map((photo, index) => {
-                        return (
-                          <Figure key={index}>
-                            <Figure.Image
-                              width={200}
-                              src={photo.photoUrl}
-                              className="p-1"
-                              alt="This image was deleted."
-                              height={200}
-                            ></Figure.Image>
-                            <Figure.Caption className="p-1">
-                              <p className="h4 text-platinum">{photo.Title}</p>
-                              <p className="h6 text-white">
-                                {photo.Description}
-                              </p>
-                            </Figure.Caption>
-                          </Figure>
-                        );
-                      })
-                    ) : (
-                      <p className="alert alert-warning" role="alert">
-                        You have no photos in the database. Upload a Photo to
-                        view.
-                      </p>
-                    )}
+                    <FigureComponent photos={userPhotos} />
                   </div>
                 </Col>
               </Row>
