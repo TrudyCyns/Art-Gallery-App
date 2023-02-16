@@ -36,6 +36,18 @@ html {
   color: black;
 }
 
+.btn-outline-primary {
+  border-color: var(--orange) !important;
+  color: var(--orange) !important;
+  font-weight: bold !important;
+}
+
+.btn-outline-primary:hover {
+  border-color: var(--orange) !important;
+  background-color: var(--orange) !important;
+  color: black !important;
+}
+
 .navbar-brand:hover {
   color: var(--orange) !important;
 }

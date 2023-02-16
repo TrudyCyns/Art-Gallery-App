@@ -1,5 +1,5 @@
-import { Col, Container, Image, Row, Figure, Button } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Col, Container, Row, Figure, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 import { DashNavbar } from './../components/Navs';
@@ -7,8 +7,8 @@ import { PhotoUploadModal } from '../components/Modal';
 
 import './../assets/styles/universalStyles.css';
 
-import { getPhotos } from '../helpers/requests';
 import { getUserPhotos } from './../helpers/requests';
+import { clearUserData } from '../store/authSlice';
 
 export default function DashboardPage() {
   const [photos, setPhotos] = useState([]);

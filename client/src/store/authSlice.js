@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const authSlice = createSlice({
   name: 'userData',
   initialState: {
-    userData: JSON.parse(localStorage.getItem('userData')) || {},
+    userData: JSON.parse(localStorage.getItem('userData')) || { Email: '' },
   },
   reducers: {
     updateUserData: (state, action) => {

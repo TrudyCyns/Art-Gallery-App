@@ -1,13 +1,16 @@
-import { Container, Nav, Navbar, Button, Image } from "react-bootstrap";
+import { Container, Nav, Navbar, Button, Image } from 'react-bootstrap';
 
-import "./../assets/styles/Nav.css";
-import "./../assets/styles/universalStyles.css";
+import './../assets/styles/Nav.css';
+import './../assets/styles/universalStyles.css';
+import { useDispatch } from 'react-redux';
+import { clearUserData } from '../store/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
   return (
     <header className="border-bottom">
       <Navbar variant="dark" expand="lg" fixed="top" className="bg-black">
-      <Container>
+        <Container>
           <Navbar.Brand href="/">ArtGallery</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -16,7 +19,9 @@ function NavBar() {
             </Nav>
             <Nav className="d-flex align-items-center d-flex flex-row">
               <Nav.Item className="mx-2">
-                <Button href="/login" className="rounded">Login / Sign Up</Button>
+                <Button href="/login" className="rounded">
+                  Login / Sign Up
+                </Button>
               </Nav.Item>
             </Nav>
           </Navbar.Collapse>
@@ -27,6 +32,9 @@ function NavBar() {
 }
 
 function DashNavbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <header className="border-bottom">
       <Navbar
@@ -44,9 +52,18 @@ function DashNavbar() {
               <Nav.Link href="/myphotos">My Photos</Nav.Link>
             </Nav>
             <Nav className="d-flex align-items-center d-flex flex-row">
-              <Nav.Link href="/" className="mx-2">
-                Logout
-              </Nav.Link>
+              <Nav.Item className="mx-2">
+                <Button
+                  variant="outline-primary"
+                  className="rounded"
+                  onClick={() => {
+                    dispatch(clearUserData());
+                    navigate('/');
+                  }}
+                >
+                  Logout
+                </Button>
+              </Nav.Item>
               <Nav.Item className="mx-2">
                 <Image
                   src="https://picsum.photos/32"
