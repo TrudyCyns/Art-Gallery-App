@@ -117,6 +117,7 @@ function PasswordResetForm(props) {
 }
 
 function SignupForm(props) {
+  const navigate=useNavigate()
   return (
     <div className="p-3">
       <Formik
@@ -130,7 +131,7 @@ function SignupForm(props) {
         validationSchema={signupValidationSchema}
         onSubmit={(values) => {
           console.log({ ...values, ConfirmPassword: undefined });
-          registerUser({ ...values, ConfirmPassword: undefined });
+          registerUser({ ...values, ConfirmPassword: undefined }, navigate);
         }}
       >
         {({ handleSubmit, errors }) => (

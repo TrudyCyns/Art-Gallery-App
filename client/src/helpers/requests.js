@@ -55,14 +55,15 @@ const createFormData = (file) => {
   return data;
 };
 
-const registerUser = async (data) => {
+const registerUser = async (data, navigate) => {
   try {
     const res = await axios.post(`${baseUrl}/users/new`, data, {
       headers: { Accept: '*/*', 'Content-Type': 'application/json' },
     });
 
-    if (res.data.message === 'Email already exists') {
+    if (res.data.message === 'User Successfully created') {
       alert(res.data.message);
+      navigate('/login')
     } else {
       alert(res.data.message);
     }
