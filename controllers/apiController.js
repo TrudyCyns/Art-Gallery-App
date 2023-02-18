@@ -7,7 +7,7 @@ const { format } = require('util');
 const { Storage } = require('@google-cloud/storage');
 // Instantiate a storage client with credentials
 const storage = new Storage({ keyFilename: 'google-cloud-key.json' });
-const bucket = storage.bucket('art-gallery-bucket-app');
+const bucket = storage.bucket('art-gallery-app-bucket');
 
 // Create a User
 exports.createUser = async (req, res, next) => {
